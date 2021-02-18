@@ -1,5 +1,7 @@
 package com.tematihonov;
 
+import javafx.beans.binding.MapExpression;
+
 import java.util.*;
 
 public class Main {
@@ -40,15 +42,30 @@ public class Main {
 
 //2
     System.out.println("2");
-    Map<String, Integer> map = new TreeMap();
-    map.put("Tikhonov Artem", 123);
-    map.put("Fomichev Igor", 6969);
-    map.put("Sartov Mikhail", 1337);
-    for (Map.Entry<String, Integer> o : map.entrySet()) {
-        if (o.getKey().equals())
-        System.out.println(o.getKey() + ": " + o.getValue());
+    Map<String, String> phonebook = new TreeMap();
+
+        phonebook.put("88008008888", "Tikhonov Artem");
+        phonebook.put("88008007777", "Fomichev Igor");
+        phonebook.put("88008006666", "Sartov Mikhail");
+        phonebook.put("88008005555", "Tikhonov Artem");
+
+        System.out.println("Вывод Tikhonov Artem: ");
+        get(phonebook, "Tikhonov Artem");
+        System.out.println("Вывод после добавления второго номера для Sartov Mikhail: ");
+        add(phonebook, "88008004444", "Sartov Mikhail");
+        get(phonebook, "Sartov Mikhail");
+
     }
 
+    private static void add(Map<String, String> phonebook, String phoneNumber,  String name) {
+        phonebook.put(phoneNumber, name);
+    }
+    private static void get(Map<String, String> phonebook,  String name) {
+        for (Map.Entry<String,String> o : phonebook.entrySet()) {
+            if (o.getValue().equals(name)) {
+                System.out.println(o.getValue() + ": " + o.getKey());
+            }
+        }
     }
 
 }
